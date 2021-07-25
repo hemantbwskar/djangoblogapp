@@ -28,6 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['https://djangobloghrb.azurewebsites.net']
 
+STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
 
 # Application definition
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    # Add whitenoise middleware after the security middleware                             
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # Other values follow
 ]
 
 ROOT_URLCONF = 'django_project.urls'
