@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'DidleySquat'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0FE03ABE6B71459DB7D60E46E9CA5BEB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2D107DFF2C5641B1BAF2988DD14AAC31 }}
