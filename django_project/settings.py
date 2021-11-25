@@ -20,13 +20,29 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!6c%ep#ec4oe_4(47mc=m*wuwcfl*(@ee-$7ph=olcw)5!@tyb'
+with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
+    SECRET_KEY = f.read().strip()
+# SECRET_KEY = 'django-insecure-!6c%ep#ec4oe_4(47mc=m*wuwcfl*(@ee-$7ph=olcw)5!@tyb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 
 ALLOWED_HOSTS = ['didleysquat.azurewebsites.net']
+
+
+# Django HTTPS Settings
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+
+
+# Django HSTS Settings
+
+SECURE_HSTS_SECONDS = 31536000 # 1 year
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 import socket
 socket.getaddrinfo('localhost', 8090)
@@ -124,14 +140,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+
 STATIC_URL = '/static/'
-
-# Add these new lines
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
