@@ -28,21 +28,21 @@ with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['didleysquat.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
 
 
-# Django HTTPS Settings
+# # Django HTTPS Settings
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
 
 
 # Django HSTS Settings
 
-SECURE_HSTS_SECONDS = 31536000 # 1 year
-SECURE_HSTS_PRELOAD = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_SECONDS = 31536000 # 1 year
+# SECURE_HSTS_PRELOAD = True
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 import socket
 socket.getaddrinfo('localhost', 8090)
@@ -142,7 +142,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
